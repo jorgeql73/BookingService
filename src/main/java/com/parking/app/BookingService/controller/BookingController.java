@@ -38,4 +38,11 @@ public class BookingController {
         Booking bookingCreated =  bookingService.createBooking(booking);
         return ResponseEntity.status(HttpStatus.CREATED).body(bookingCreated);
     }
+
+    @GetMapping( "/search-by-customer/{idCustomer}")
+    public ResponseEntity<List<Booking>> findByCustomerId(@PathVariable Long idCustomer){
+        List<Booking> resultado = bookingService.findByCustomerId(idCustomer);
+        return ResponseEntity.ok(resultado);
+
+    }
 }
